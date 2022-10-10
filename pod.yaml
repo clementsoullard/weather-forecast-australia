@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: jupytermount
+  labels:
+   app.kubernetes.io/name: proxy
+spec:
+  volumes:
+    - name: task-pv-storage
+      persistentVolumeClaim:
+        claimName: task-pv-claim
+  containers:
+  - name: jupytermount
+    image: localhost:32000/jupyter:2
+    ports:
+      - containerPort: 8888
+        name: "http-server"
+    volumeMounts:
+      - mountPath: "/home/jovyan"
+        name: task-pv-storage
