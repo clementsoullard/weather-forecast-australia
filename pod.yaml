@@ -11,7 +11,7 @@ spec:
         claimName: task-pv-claim
   containers:
   - name: jupytermount
-    image: localhost:32000/jupyter:2
+    image: localhost:32000/jupyter:6
     ports:
       - containerPort: 8888
         name: "http-server"
